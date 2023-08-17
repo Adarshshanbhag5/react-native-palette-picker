@@ -9,5 +9,5 @@ abstract class PalettePickerSpec extends ReactContextBaseJavaModule {
     super(context);
   }
 
-  public abstract void multiply(double a, double b, Promise promise);
+  public abstract void getPalette(ReadableMap resource, ReadableMap config, Promise promise);
 }
