@@ -1,4 +1,10 @@
 import { NativeModules, Platform } from 'react-native';
+import type {
+  Config,
+  ImageColorsResult,
+  imgResourceType,
+} from './NativePalettePicker';
+import type { ImageRequireSource } from 'react-native';
 
 const LINKING_ERROR =
   `The package 'react-native-palette-picker' doesn't seem to be linked. Make sure: \n\n` +
@@ -24,6 +30,16 @@ const PalettePicker = PalettePickerModule
       }
     );
 
-export function multiply(a: number, b: number): Promise<number> {
-  return PalettePicker.multiply(a, b);
+export function getPalette(
+  source: string | ImageRequireSource,
+  config: Config
+): Promise<ImageColorsResult> {
+  if (typeof source === 'string') {
+    const imgResource: imgResourceType = { uri: source, resourceId: 0 };
+
+    return PalettePicker.getPalette(imgResource, config);
+  } else {
+    const imgResource: imgResourceType = { uri: '', resourceId: source };
+    return PalettePicker.getPalette(imgResource, config);
+  }
 }
