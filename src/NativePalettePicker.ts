@@ -24,20 +24,18 @@ export interface Config {
    * @default '#000000'
    */
   fallback: string;
-}
 
-export interface imgResourceType {
-  uri: string;
-  resourceId: number;
+  /**
+   * @description Text color used when getting color fails.(titleTextColor,bodyTextColor). Must be hex
+   * @default '#ffffff'
+   */
+  fallbackTextColor: string;
 }
 
 export type ImageColorsResult = ImageColors;
 
 export interface Spec extends TurboModule {
-  getPalette(
-    resource: imgResourceType,
-    config: Config
-  ): Promise<ImageColorsResult>;
+  getPalette(uri: string, config: Config): Promise<ImageColorsResult>;
 }
 
 export default TurboModuleRegistry.getEnforcing<Spec>('PalettePicker');

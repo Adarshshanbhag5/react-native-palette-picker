@@ -1,9 +1,5 @@
-import { NativeModules, Platform } from 'react-native';
-import type {
-  Config,
-  ImageColorsResult,
-  imgResourceType,
-} from './NativePalettePicker';
+import { NativeModules, Platform, Image } from 'react-native';
+import type { Config, ImageColorsResult } from './NativePalettePicker';
 import type { ImageRequireSource } from 'react-native';
 
 const LINKING_ERROR =
@@ -32,14 +28,15 @@ const PalettePicker = PalettePickerModule
 
 export function getPalette(
   source: string | ImageRequireSource,
-  config: Config
+  config: Config = { fallback: '#000000', fallbackTextColor: '#ffffff' }
 ): Promise<ImageColorsResult> {
   if (typeof source === 'string') {
-    const imgResource: imgResourceType = { uri: source, resourceId: 0 };
-
-    return PalettePicker.getPalette(imgResource, config);
+    const uri = source;
+    return PalettePicker.getPalette(uri, config);
   } else {
-    const imgResource: imgResourceType = { uri: '', resourceId: source };
-    return PalettePicker.getPalette(imgResource, config);
+    const uri = Image.resolveAssetSource(source).uri;
+    return PalettePicker.getPalette(uri, config);
   }
 }
+
+export type { ImageColorsResult };
