@@ -40,8 +40,16 @@
   },
   "keywords": [
     "react-native",
-    "ios",
-    "android"
+    "android",
+    "react",
+    "palette",
+    "image-colors",
+    "dominant",
+    "react-native-image",
+    "color",
+    "image",
+    "react-native-palette",
+    "palette-api"
   ],
   "repository": "https://github.com/Adarshshanbhag5/react-native-palette-picker",
   "author": "adarsh <adarshshanbhag5@gmail.com> (https://github.com/Adarshshanbhag5)",
