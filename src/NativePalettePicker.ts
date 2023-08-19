@@ -1,11 +1,9 @@
 import type { TurboModule } from 'react-native';
 import { TurboModuleRegistry } from 'react-native';
 
-/*
-types
-*/
+//types
 
-export interface ImageColors {
+export interface ImageColorsResult {
   dominant: string;
   vibrant: string;
   darkVibrant: string;
@@ -13,7 +11,6 @@ export interface ImageColors {
   darkMuted: string;
   lightMuted: string;
   muted: string;
-  rgb: string;
   titleTextColor: string;
   bodyTextColor: string;
 }
@@ -31,8 +28,6 @@ export interface Config {
    */
   fallbackTextColor: string;
 }
-
-export type ImageColorsResult = ImageColors;
 
 export interface Spec extends TurboModule {
   getPalette(uri: string, config: Config): Promise<ImageColorsResult>;
